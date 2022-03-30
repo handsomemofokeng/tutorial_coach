@@ -252,7 +252,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          print('hello');
+          showTutorial();
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
