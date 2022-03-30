@@ -80,21 +80,9 @@ class _MyHomePageState extends State<MyHomePage> {
         keyTarget: search,
         contents: [
           TargetContent(
-            child: Column(
-              children: const [
-                Text(
-                  'Search',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25.0,
-                      color: Colors.black),
-                ),
-                Text(
-                  'This is a Search menu option...',
-                  style: TextStyle(fontSize: 20.0, color: Colors.black),
-                ),
-              ],
-            ),
+            child: TutorialContent(
+                name: 'Search',
+                description: 'Hello world generating some random text on this'),
           ),
         ],
       ),
@@ -105,23 +93,9 @@ class _MyHomePageState extends State<MyHomePage> {
         keyTarget: notifications,
         contents: [
           TargetContent(
-            child: Column(
-              children: const [
-                Text(
-                  'Notifications',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25.0,
-                      color: Colors.black),
-                ),
-                Text(
-                  'I wonder how I am going to incorporate this in a Native '
-                  'Platform seamlessly without having to recreate the screens '
-                  'in in Flutter... Man I hope it\'s not gonna be a mission ',
-                  style: TextStyle(fontSize: 20.0, color: Colors.black),
-                ),
-              ],
-            ),
+            child: TutorialContent(
+                name: 'Notifications',
+                description: 'Hello world generating some random text on this'),
           ),
         ],
       ),
@@ -132,56 +106,35 @@ class _MyHomePageState extends State<MyHomePage> {
         keyTarget: connections,
         contents: [
           TargetContent(
-            child: Column(
-              children: const [
-                Text(
-                  'Connections',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25.0,
-                      color: Colors.black),
-                ),
-                Text(
-                  'I wonder how I am going to incorporate this in a Native '
-                  'Platform seamlessly without having to recreate the screens '
-                  'in in Flutter... Man I hope it\'s not gonna be a mission ',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.0,
-                      color: Colors.black),
-                ),
-              ],
-            ),
+            child: TutorialContent(
+                name: 'Connections',
+                description: 'Hello world generating some random text on this'),
           ),
         ],
       ),
     );
     targets.add(
       TargetFocus(
-        identify: 'Feature 1',
+        identify: 'Change City',
         keyTarget: key1,
         contents: [
           TargetContent(
-            child: Column(
-              children: const [
-                Text(
-                  'Feature 1',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25.0,
-                      color: Colors.black),
-                ),
-                Text(
-                  'I wonder how I am going to incorporate this in a Native '
-                  'Platform seamlessly without having to recreate the screens '
-                  'in in Flutter... Man I hope it\'s not gonna be a mission ',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.0,
-                      color: Colors.black),
-                ),
-              ],
-            ),
+            child: TutorialContent(
+                name: 'Change City',
+                description: 'Hello world generating some random text on this'),
+          ),
+        ],
+      ),
+    );
+    targets.add(
+      TargetFocus(
+        identify: 'Alerts',
+        keyTarget: key2,
+        contents: [
+          TargetContent(
+            child: TutorialContent(
+                name: 'Alerts',
+                description: 'Hello world generating some random text on this'),
           ),
         ],
       ),
@@ -191,68 +144,125 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-        leading: Icon(
-          Icons.arrow_back_ios,
-          key: back,
-        ),
-        actions: [
-          Icon(
-            Icons.search,
-            key: search,
-          ),
-          const SizedBox(width: 10.0),
-          Icon(
-            Icons.notifications,
-            key: notifications,
-          ),
-          const SizedBox(width: 10.0),
-          Icon(
-            Icons.group,
-            key: connections,
-          ),
-          const SizedBox(width: 10.0),
-        ],
-      ),
-      body: Column(
-        children: [
-          // Image.asset('images/socialfeed_screen.png'),
-          Center(
-            // Center is a layout widget. It takes a single child and positions it
-            // in the middle of the parent.
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const SizedBox(height: 50.0),
-                Container(
-                  child: Text(
-                    '1',
-                    style: Theme.of(context).textTheme.headline4,
-                    key: key1,
-                  ),
+      // appBar: AppBar(
+      //   // Here we take the value from the MyHomePage object that was created by
+      //   // the App.build method, and use it to set our appbar title.
+      //   title: Text(widget.title),
+      //   leading: Icon(
+      //     Icons.arrow_back_ios,
+      //     key: back,
+      //   ),
+      //   actions: [
+      //     Icon(
+      //       Icons.search,
+      //       key: search,
+      //     ),
+      //     const SizedBox(width: 10.0),
+      //     Icon(
+      //       Icons.notifications,
+      //       key: notifications,
+      //     ),
+      //     const SizedBox(width: 10.0),
+      //     Icon(
+      //       Icons.group,
+      //       key: connections,
+      //     ),
+      //     const SizedBox(width: 10.0),
+      //   ],
+      // ),
+      body: Stack(
+        children: <Widget>[
+          Container(
+            constraints: const BoxConstraints.expand(),
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(
+                  'images/tutorial_screen.png',
                 ),
-                const SizedBox(height: 50.0),
-                Container(
-                  child: Text(
-                    '2',
-                    style: Theme.of(context).textTheme.headline4,
-                    key: key2,
-                  ),
-                ),
-                const SizedBox(height: 50.0),
-                Container(
-                  child: Text(
-                    '3',
-                    style: Theme.of(context).textTheme.headline4,
-                    key: key3,
-                  ),
-                ),
-              ],
+                fit: BoxFit.cover,
+              ),
             ),
           ),
+
+          // Container(
+          //   width: double.infinity,
+          //   height: double.infinity,
+          //   constraints: const BoxConstraints.expand(),
+          //   decoration: const BoxDecoration(
+          //     image: DecorationImage(
+          //       image: AssetImage('images/tutorial_screen.png'),
+          //       fit: BoxFit.fitWidth,
+          //     ),
+          //   ),
+          // ),
+
+          Align(
+            alignment: const Alignment(1.0, -0.95),
+            child: SizedBox(
+              height: 50,
+              width: 50,
+              key: connections,
+            ),
+          ),
+          Align(
+            alignment: const Alignment(0.75, -0.95),
+            child: SizedBox(
+              height: 50,
+              width: 50,
+              key: notifications,
+            ),
+          ),
+          Align(
+            alignment: const Alignment(0.5, -0.95),
+            child: SizedBox(
+              height: 50,
+              width: 50,
+              key: search,
+            ),
+          ),
+          Align(
+            alignment: const Alignment(0.0, -0.75),
+            child: Expanded(
+              flex: 1,
+              child: SizedBox(
+                height: 50,
+                width: 250,
+                key: key1,
+              ),
+            ),
+          ),
+          Align(
+            alignment: const Alignment(0.0, -0.55),
+            child: Expanded(
+              flex: 1,
+              child: SizedBox(
+                height: 50,
+                width: 250,
+                key: key2,
+              ),
+            ),
+          ),
+
+          // Column(
+          //   children: [
+          //     Row(
+          //       children: [
+          //         Container(
+          //           height: 50,
+          //           width: 50,
+          //           color: Colors.red,
+          //           alignment: Alignment.topLeft,
+          //         ),
+          //         Container(
+          //           height: 50,
+          //           width: 50,
+          //           color: Colors.blue,
+          //           alignment: Alignment.topLeft,
+          //         ),
+          //       ],
+          //     ),
+          //   ],
+          // ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -262,6 +272,44 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+
+  Size displaySize(BuildContext context) {
+    debugPrint('Size = ' + MediaQuery.of(context).size.toString());
+    return MediaQuery.of(context).size;
+  }
+
+  double displayHeight(BuildContext context) {
+    debugPrint('Height = ' + displaySize(context).height.toString());
+    return displaySize(context).height;
+  }
+
+  double displayWidth(BuildContext context) {
+    debugPrint('Width = ' + displaySize(context).width.toString());
+    return displaySize(context).width;
+  }
+}
+
+class TutorialContent extends StatelessWidget {
+  String name, description;
+
+  TutorialContent({required this.name, required this.description});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          name,
+          style: const TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 25.0, color: Colors.black),
+        ),
+        Text(
+          description,
+          style: const TextStyle(fontSize: 20.0, color: Colors.black),
+        ),
+      ],
     );
   }
 }
