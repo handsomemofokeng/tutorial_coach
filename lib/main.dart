@@ -217,38 +217,43 @@ class _MyHomePageState extends State<MyHomePage> {
           const SizedBox(width: 10.0),
         ],
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const SizedBox(height: 50.0),
-            Container(
-              child: Text(
-                '1',
-                style: Theme.of(context).textTheme.headline4,
-                key: key1,
-              ),
+      body: Column(
+        children: [
+          // Image.asset('images/socialfeed_screen.png'),
+          Center(
+            // Center is a layout widget. It takes a single child and positions it
+            // in the middle of the parent.
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const SizedBox(height: 50.0),
+                Container(
+                  child: Text(
+                    '1',
+                    style: Theme.of(context).textTheme.headline4,
+                    key: key1,
+                  ),
+                ),
+                const SizedBox(height: 50.0),
+                Container(
+                  child: Text(
+                    '2',
+                    style: Theme.of(context).textTheme.headline4,
+                    key: key2,
+                  ),
+                ),
+                const SizedBox(height: 50.0),
+                Container(
+                  child: Text(
+                    '3',
+                    style: Theme.of(context).textTheme.headline4,
+                    key: key3,
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(height: 50.0),
-            Container(
-              child: Text(
-                '2',
-                style: Theme.of(context).textTheme.headline4,
-                key: key2,
-              ),
-            ),
-            const SizedBox(height: 50.0),
-            Container(
-              child: Text(
-                '3',
-                style: Theme.of(context).textTheme.headline4,
-                key: key3,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
