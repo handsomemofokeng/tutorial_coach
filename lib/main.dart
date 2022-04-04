@@ -43,13 +43,15 @@ class _MyHomePageState extends State<MyHomePage> {
   late TutorialCoachMark tutorialCoachMark;
   List<TargetFocus> targets = [];
 
-  GlobalKey back = GlobalKey();
+  GlobalKey changeCity = GlobalKey();
   GlobalKey search = GlobalKey();
   GlobalKey notifications = GlobalKey();
   GlobalKey connections = GlobalKey();
-  GlobalKey key1 = GlobalKey();
-  GlobalKey key2 = GlobalKey();
-  GlobalKey key3 = GlobalKey();
+  GlobalKey alerts = GlobalKey();
+  GlobalKey newsFeeds = GlobalKey();
+  GlobalKey createPost = GlobalKey();
+  GlobalKey reportPost = GlobalKey();
+  GlobalKey petitionPost = GlobalKey();
 
   @override
   void initState() {
@@ -66,9 +68,13 @@ class _MyHomePageState extends State<MyHomePage> {
   void showTutorial() {
     tutorialCoachMark = TutorialCoachMark(context,
         targets: targets,
-        colorShadow: Colors.orange,
+        colorShadow: Colors.black,
         opacityShadow: 0.7,
         paddingFocus: 5,
+        textStyleSkip: const TextStyle(
+          color: Colors.orange,
+          fontWeight: FontWeight.bold,
+        ),
         alignSkip: Alignment.bottomCenter)
       ..show();
   }
@@ -82,14 +88,15 @@ class _MyHomePageState extends State<MyHomePage> {
           TargetContent(
             child: TutorialContent(
                 name: 'Search',
-                description: 'Hello world generating some random text on this'),
+                description:
+                    'Find people you know in your city by name and follow them'),
           ),
         ],
       ),
     );
     targets.add(
       TargetFocus(
-        identify: 'Feature 1',
+        identify: 'Notifications',
         keyTarget: notifications,
         contents: [
           TargetContent(
@@ -116,12 +123,14 @@ class _MyHomePageState extends State<MyHomePage> {
     targets.add(
       TargetFocus(
         identify: 'Change City',
-        keyTarget: key1,
+        keyTarget: changeCity,
         contents: [
           TargetContent(
+            align: ContentAlign.bottom,
             child: TutorialContent(
                 name: 'Change City',
-                description: 'Hello world generating some random text on this'),
+                description:
+                    'See News Feed from a different city by swiping left or right to change city'),
           ),
         ],
       ),
@@ -129,12 +138,26 @@ class _MyHomePageState extends State<MyHomePage> {
     targets.add(
       TargetFocus(
         identify: 'Alerts',
-        keyTarget: key2,
+        keyTarget: alerts,
         contents: [
           TargetContent(
             child: TutorialContent(
                 name: 'Alerts',
-                description: 'Hello world generating some random text on this'),
+                description: 'Stay updated on when you\'ll have load shedding and integrate load shedding schedule with your calendar.'),
+          ),
+        ],
+      ),
+    );
+    targets.add(
+      TargetFocus(
+        identify: 'News Feed',
+        keyTarget: newsFeeds,
+        contents: [
+          TargetContent(
+            align: ContentAlign.top,
+            child: TutorialContent(
+                name: 'News Feed',
+                description: 'See reports, petition and announcements created near you.'),
           ),
         ],
       ),
@@ -174,6 +197,8 @@ class _MyHomePageState extends State<MyHomePage> {
         children: <Widget>[
           Container(
             constraints: const BoxConstraints.expand(),
+            width: double.infinity,
+            height: double.infinity,
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(
@@ -197,7 +222,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // ),
 
           Align(
-            alignment: const Alignment(1.0, -0.95),
+            alignment: const Alignment(1.0, -0.9),
             child: SizedBox(
               height: 50,
               width: 50,
@@ -205,7 +230,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Align(
-            alignment: const Alignment(0.75, -0.95),
+            alignment: const Alignment(0.75, -0.9),
             child: SizedBox(
               height: 50,
               width: 50,
@@ -213,7 +238,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Align(
-            alignment: const Alignment(0.5, -0.95),
+            alignment: const Alignment(0.55, -0.9),
             child: SizedBox(
               height: 50,
               width: 50,
@@ -221,24 +246,35 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Align(
-            alignment: const Alignment(0.0, -0.75),
+            alignment: const Alignment(0.025, -0.75),
             child: Expanded(
               flex: 1,
               child: SizedBox(
-                height: 50,
-                width: 250,
-                key: key1,
+                height: 130,
+                width: 130,
+                key: changeCity,
               ),
             ),
           ),
           Align(
-            alignment: const Alignment(0.0, -0.55),
+            alignment: const Alignment(-1.0, -0.4),
             child: Expanded(
               flex: 1,
               child: SizedBox(
-                height: 50,
-                width: 250,
-                key: key2,
+                height: 125,
+                width: 125,
+                key: alerts,
+              ),
+            ),
+          ),
+          Align(
+            alignment: const Alignment(0.0, 0.75),
+            child: Expanded(
+              flex: 1,
+              child: SizedBox(
+                height: 480,
+                width: double.infinity,
+                key: newsFeeds,
               ),
             ),
           ),
@@ -270,7 +306,7 @@ class _MyHomePageState extends State<MyHomePage> {
           showTutorial();
         },
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.navigate_next),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
@@ -303,11 +339,11 @@ class TutorialContent extends StatelessWidget {
         Text(
           name,
           style: const TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 25.0, color: Colors.black),
+              fontWeight: FontWeight.bold, fontSize: 25.0, color: Colors.white),
         ),
         Text(
           description,
-          style: const TextStyle(fontSize: 20.0, color: Colors.black),
+          style: const TextStyle(fontSize: 20.0, color: Colors.white),
         ),
       ],
     );
