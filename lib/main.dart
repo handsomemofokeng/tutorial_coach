@@ -143,7 +143,8 @@ class _MyHomePageState extends State<MyHomePage> {
           TargetContent(
             child: TutorialContent(
                 name: 'Alerts',
-                description: 'Stay updated on when you\'ll have load shedding and integrate load shedding schedule with your calendar.'),
+                description:
+                    'Stay updated on when you\'ll have load shedding and integrate load shedding schedule with your calendar.'),
           ),
         ],
       ),
@@ -157,7 +158,53 @@ class _MyHomePageState extends State<MyHomePage> {
             align: ContentAlign.top,
             child: TutorialContent(
                 name: 'News Feed',
-                description: 'See reports, petition and announcements created near you.'),
+                description:
+                    'See reports, petition and announcements created near you.'),
+          ),
+        ],
+      ),
+    );
+    targets.add(
+      TargetFocus(
+        identify: 'Announcement Post',
+        keyTarget: createPost,
+        contents: [
+          TargetContent(
+            align: ContentAlign.top,
+            child: TutorialContent(
+                name: 'Announcement Post',
+                description:
+                    '- Get updated about what is happening in your area.\n- Create post to share issues related to your area.'),
+          ),
+        ],
+      ),
+    );
+    targets.add(
+      TargetFocus(
+        identify: 'Post Reports you created',
+        keyTarget: reportPost,
+        contents: [
+          TargetContent(
+            align: ContentAlign.top,
+            child: TutorialContent(
+                name: 'Post Reports you created',
+                description:
+                    'Share reports you created with people in your area'),
+          ),
+        ],
+      ),
+    );
+    targets.add(
+      TargetFocus(
+        identify: 'Post Petitions you created',
+        keyTarget: newsFeeds,
+        contents: [
+          TargetContent(
+            align: ContentAlign.top,
+            child: TutorialContent(
+                name: 'Post Petitions you created',
+                description:
+                    'Share petitions you created with people in your area.'),
           ),
         ],
       ),
@@ -257,12 +304,12 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Align(
-            alignment: const Alignment(-1.0, -0.4),
+            alignment: const Alignment(-1.0, -0.425),
             child: Expanded(
               flex: 1,
               child: SizedBox(
-                height: 125,
-                width: 125,
+                height: 120,
+                width: 120,
                 key: alerts,
               ),
             ),
@@ -272,7 +319,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Expanded(
               flex: 1,
               child: SizedBox(
-                height: 480,
+                height: 470,
                 width: double.infinity,
                 key: newsFeeds,
               ),
